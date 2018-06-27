@@ -1,13 +1,14 @@
 import React from 'react';
 
-function AllTopics(props) {
-    return (
-        <div>
-            Articles.map(article => {
-                <p>article.title</p>                
-            })
-        </div>
-    );
+function AllTopics({topics}) {
+   
+        return (
+            <div>
+                {topics.map(topic => {
+                   return <p>{topic.title}</p>                
+                })}
+            </div>
+        );
 }
 
-export default AllTopics
+export default AllTopics;

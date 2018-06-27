@@ -17,5 +17,6 @@
   background-color: rgb(207, 35, 5);
   grid-row-start: 3;
   grid-row-end: 4;
+  text-align: justify;
 }
 

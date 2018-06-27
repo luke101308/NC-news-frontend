@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Nav from "./components/Nav"
+import Content from "./components/Content"
 
 class App extends Component {
   render() {
@@ -8,7 +9,7 @@ class App extends Component {
       <div className="App">
       <h1 className="Title">Northcoders News</h1>
       <Nav />
-      <div className="Content">Content</div> 
+      <Content />
       </div>
     );
   }

@@ -4,14 +4,23 @@ import AllArticlesButton from "./NavComponents/AllArticlesButton"
 import AllTopicsButton from "./NavComponents/AllTopicsButton"
 import SearchButton from "./NavComponents/SearchButton"
 import LoginButton from "./NavComponents/LoginButton"
+import {Link} from "react-router-dom"
 
 function Nav(props) {
     return (
         <nav className="Nav">   
-        <AllArticlesButton/>
-        <AllTopicsButton />
+        <Link to="/allarticles" className="Button">
+            <AllArticlesButton />
+        </Link>
+        <Link to="/alltopics" className="Button">
+            <AllTopicsButton />
+        </Link>
+        <Link to="/search" className="Button"> 
         <SearchButton />
+        </Link>
+        <Link to="/login" className="Button">
         <LoginButton />
+        </Link>
         </nav>
     );
 }
