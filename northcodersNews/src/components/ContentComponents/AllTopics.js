@@ -3,9 +3,9 @@ import React from 'react';
 function AllTopics({topics}) {
    
         return (
-            <div>
+            <div className="Display">
                 {topics.map(topic => {
-                   return <p>{topic.title}</p>                
+                   return <p key={topic.title}>{topic.title}</p>                
                 })}
             </div>
         );

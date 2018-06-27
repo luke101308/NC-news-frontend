@@ -9,10 +9,10 @@ import {Link} from "react-router-dom"
 function Nav(props) {
     return (
         <nav className="Nav">   
-        <Link to="/allarticles" className="Button">
+        <Link to="/articles" className="Button">
             <AllArticlesButton />
         </Link>
-        <Link to="/alltopics" className="Button">
+        <Link to="/topics" className="Button">
             <AllTopicsButton />
         </Link>
         <Link to="/search" className="Button"> 
