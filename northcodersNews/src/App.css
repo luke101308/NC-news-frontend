@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns:100vw;
+  grid-template-rows: 10vh 5vh 85vh;
+
+}
+
+.Title {
+  background-color: aqua;
+  height: 10vh;
+  line-height: 10vh;
+  margin: 0;
+}
+
+.Content{
+  background-color: rgb(207, 35, 5);
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
