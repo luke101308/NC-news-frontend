@@ -50,3 +50,9 @@ export const changeArticleVote = (article_id, direction) => {
 export const deleteComment = (comment_id) => {
     return axios.delete(`${url}/comments/${comment_id}`)
 }
+
+export const findUser = (username) => {
+  return axios.get(`${url}/users/${username}`).then(res => {
+      return res.data.user
+  })
+}

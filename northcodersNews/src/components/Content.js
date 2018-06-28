@@ -5,6 +5,7 @@ import AllTopics from "./ContentComponents/AllTopics"
 import AllArticles from './ContentComponents/AllArticles';
 import ArticleFromId from "./ContentComponents/ArticleFromId"
 import ArticlesByTopic from "./ContentComponents/ArticlesByTopic"
+import Login from "./ContentComponents/Login"
 
 class Content extends React.Component {
     state = {
@@ -39,12 +40,16 @@ class Content extends React.Component {
            <Route exact path="/articles" render={() => {
                return <AllArticles articles={this.state.articles}/>
             }}/>
+             <Route path="/login" render={() => {
+                return <Login login={this.props.login}/>
+            }}/>
             <Route path="/articles/:article_id" render={(props) => {
                 return <ArticleFromId {...props} user={this.props.user}/>
             }}/>
             <Route path="/topics/:topic_slug" render={(props) => {
                 return <ArticlesByTopic {...props}/>
             }}/>
+            
         </div>
     }
 }

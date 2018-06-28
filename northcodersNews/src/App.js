@@ -2,26 +2,29 @@ import React, { Component } from 'react';
 import './App.css';
 import Nav from "./components/Nav"
 import Content from "./components/Content"
+import {findUser} from "./apiAccess" 
 
 class App extends Component {
   state = {
-    user: {
-      _id: "5b1d059793df3b085c02fed1",
-      username: "grumpy19",
-      name: "Paul Grump",
-      avatar_url: "http://www.tumbit.com/profile-image/4/original/mr-grumpy.jpg",
-      __v: 0
-      }
+    user: {}
   }
   render() {
     return (
       <div className="App">
       <h1 className="Title">Northcoders News</h1>
-      <Nav />
-      <Content user={this.state.user}/>
+      <Nav user={this.state.user} logout={this.logout}/>
+      <Content user={this.state.user} login={this.logIn}/>
       </div>
     );
   }
+  logIn = (userName) => {
+    findUser(userName).then(user => {
+      this.setState({user})
+    })
+    }
+    logout = () => {
+      this.setState({user: {}})
+    }
 }
 
 export default App;
