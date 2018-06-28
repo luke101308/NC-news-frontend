@@ -29,3 +29,13 @@
 .NeedsMargin{
   margin: 10px
 }
+
+.Comment{
+  display:grid;
+  grid-template-columns: 2em 7em 51em 5em 5em 5em 7em;
+  align-items: center
+}
+
+.Delete{
+  margin: 20px
+}

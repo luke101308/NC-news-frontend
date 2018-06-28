@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import {getCommentsByArticleId} from "../../apiAccess"
 import defaultAvatar from "./default_avatar.png"
+import PostComment from "./PostComment"
+import {postComment, changeCommentVote, deleteComment} from "../../apiAccess"
+
 
 class Comments extends Component {
     state = {
-        comments: []
+        comments: [],
+        comment: ''
     }
 
     componentDidMount(){
-        getCommentsByArticleId(this.props.article_id).then(comments => {
+        getCommentsByArticleId(this.props.article._id).then(comments => {
             this.setState({comments})
         })
     }
 
     componentDidUpdate(prevProps, prevState){
         if(this.props !== prevProps){
-            getCommentsByArticleId(this.props.article_id).then(comments => {
+            getCommentsByArticleId(this.props.article._id).then(comments => {
                 this.setState({comments})
             }) 
         }
@@ -23,22 +27,64 @@ class Comments extends Component {
 
     render() {
         const comments = this.state.comments
+        const comment = this.state.comment
         return (
-            <div>
-              {comments.length ? comments.map(comment => {
-                  return <div key={comment._id}>
-                      <img className="Avatar" src={comment.created_by.avatar_url} onError={this.HandleError} alt="Avatars broken - please submit a bug report"/>
-                      <span className="NeedsMargin">{comment.created_by.username}</span>
-                      <span className="NeedsMargin">{comment.body}</span>
-                  </div>
-              }) : ""}
-            </div>
+            comments.length ? <div>
+              <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/>
+              <br/>
+              {comments.map(comment => {
+                  return <div className="Comment" key={comment._id}>
+                        <img className="Avatar" src={comment.created_by.avatar_url} onError={this.HandleError} alt="Avatars broken - please submit a bug report"/>
+                        <span className="NeedsMargin">{comment.created_by.username}</span>
+                        <span className="NeedsMargin">{comment.body}</span>
+                        <div>Votes:{comment.votes}</div>
+                        <button onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}}>upvote</button>
+                        <button onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
+                        <button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button>   
+                    </div>
+              })}  
+            </div> : ""
         );
     }
 
     HandleError = (e) => {
 e.target.src= defaultAvatar
 e.target.onError= null
+    }
+    handleChange = (e) => {
+        this.setState({comment: e.target.value})
+    }
+    handleClick = () => {
+        postComment(this.props.article._id, this.state.comment, this.props.user).then(newComment => {
+        const newComments = [...this.state.comments, {...newComment, created_by:this.props.user}]
+            this.setState({comments:newComments, comment: ''})
+        })
+    }
+    ChangeCommentVotes= (comment_id, direction) => {
+        changeCommentVote(comment_id, direction).then(() => {
+            const newComments = this.state.comments.map(comment => {
+                if(comment._id === comment_id){
+                    if(direction ==="up"){
+                        comment.votes = comment.votes + 1
+                    }else{
+                        comment.votes = comment.votes - 1
+                    }
+                    return comment
+                }else{
+                    return comment
+                }
+            })
+            this.setState({comments:newComments})
+        }
+    )
+    }
+    DeleteComment = (comment_id, comment_createdBy_Id) => {
+        if(comment_createdBy_Id === this.props.user._id){
+            deleteComment(comment_id).then(() => {
+                const newComments = this.state.comments.filter(comment => comment_id !== comment._id)
+                this.setState({comments:newComments}) 
+            })
+        }
     }
 }
 

@@ -30,6 +30,23 @@ export const getCommentsByArticleId = (article_id) => {
     })
 }
 
-// export const postComment = () => {
-//     return axios.post(`${url}/`)
-// }
+export const postComment = (article_id, comment, user) => {
+    return axios.post(`${url}/articles/${article_id}/comments`, {
+        body: comment,
+        created_by: user._id
+    }).then( res => {
+        return res.data.comment
+    })
+}
+
+export const changeCommentVote = (comment_id, direction) => {
+    return axios.put(`${url}/comments/${comment_id}?vote=${direction}`)
+}
+
+export const changeArticleVote = (article_id, direction) => {
+    return axios.put(`${url}/articles/${article_id}?vote=${direction}`)
+}
+
+export const deleteComment = (comment_id) => {
+    return axios.delete(`${url}/comments/${comment_id}`)
+}

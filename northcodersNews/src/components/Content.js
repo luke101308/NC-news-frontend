@@ -40,7 +40,7 @@ class Content extends React.Component {
                return <AllArticles articles={this.state.articles}/>
             }}/>
             <Route path="/articles/:article_id" render={(props) => {
-                return <ArticleFromId {...props}/>
+                return <ArticleFromId {...props} user={this.props.user}/>
             }}/>
             <Route path="/topics/:topic_slug" render={(props) => {
                 return <ArticlesByTopic {...props}/>
