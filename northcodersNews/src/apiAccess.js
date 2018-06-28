@@ -17,3 +17,19 @@ export const getArticleById = (article_id) => {
         return res.data.article
     })
 }
+
+export const getArticlesByTopic = (topic_slug) => {
+    return axios.get(`${url}/topics/${topic_slug.toLowerCase()}/articles`).then( res => {
+        return res.data.articles
+    })
+}
+
+export const getCommentsByArticleId = (article_id) => {
+    return axios.get(`${url}/articles/${article_id}/comments`).then( res => {
+        return res.data.comments
+    })
+}
+
+// export const postComment = () => {
+//     return axios.post(`${url}/`)
+// }

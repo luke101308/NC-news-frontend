@@ -21,3 +21,11 @@
   overflow: auto;
 }
 
+.Avatar{
+  height:30px;
+  width: 30px;
+}
+
+.NeedsMargin{
+  margin: 10px
+}

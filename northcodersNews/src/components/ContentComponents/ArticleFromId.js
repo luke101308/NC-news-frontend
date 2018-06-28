@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {getArticleById} from "../../apiAccess"
 import {Link} from "react-router-dom"
+import Comments from "./Comments"
 
 class ArticleFromId extends Component {
     state = {
@@ -15,13 +16,14 @@ class ArticleFromId extends Component {
     render() {
         const article = this.state.article
         return (
-            <div>
+            Object.keys(article).length ?<div>
                 <h3>{article.title}</h3>
                 <p>{article.body}</p>
                 <br/>
                 {article.created_by ? <p> created by:{article.created_by.username}</p> : ''}
-                {article.belongs_to ? <p>see more from <Link to={`./topics/${article.belongs_to}`}>{article.belongs_to}</Link></p> : ''}
-            </div>
+                {article.belongs_to ? <p>see more from <Link to={`../topics/${article.belongs_to}`}>{article.belongs_to}</Link></p> : ''}
+                <Comments article_id={article._id}/>
+            </div> : ""
         );
     }
 }
