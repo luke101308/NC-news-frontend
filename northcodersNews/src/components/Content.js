@@ -4,6 +4,7 @@ import { getAllTopics, getAllArticles } from '../apiAccess';
 import AllTopics from "./ContentComponents/AllTopics"
 import AllArticles from './ContentComponents/AllArticles';
 import ArticleFromId from "./ContentComponents/ArticleFromId"
+import ArticlesByTopic from "./ContentComponents/ArticlesByTopic"
 
 class Content extends React.Component {
     state = {
@@ -18,16 +19,31 @@ class Content extends React.Component {
             this.setState({articles})
         })
     }
+
+    componentDidUpdate(prevProps, prevState){
+        if (this.props !== prevProps){
+            getAllTopics().then(topics=>{
+                this.setState({topics})
+            })
+            getAllArticles().then(articles=>{
+                this.setState({articles})
+            })
+        }
+    }
+
     render(props) {
         return <div className="Content">
-           <Route path="/topics" render={() =>{
+           <Route exact path="/topics" render={() =>{
                return <AllTopics topics={this.state.topics}/>
            }}/>
            <Route exact path="/articles" render={() => {
                return <AllArticles articles={this.state.articles}/>
             }}/>
-            <Route exact path={"/articles/:article_id"} render={(props) => {
+            <Route path="/articles/:article_id" render={(props) => {
                 return <ArticleFromId {...props}/>
+            }}/>
+            <Route path="/topics/:topic_slug" render={(props) => {
+                return <ArticlesByTopic {...props}/>
             }}/>
         </div>
     }
