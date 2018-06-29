@@ -40,7 +40,7 @@ class Comments extends Component {
                         <div>Votes:{comment.votes}</div>
                         {<button onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}} >upvote</button>}
                         <button onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
-                        <button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button>   
+                        {comment.created_by._id === this.props.user._id ?<button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button> : "" } 
                     </div>
               })}  
             </div> : ""
@@ -61,7 +61,7 @@ e.target.onError= null
         })
     }
     ChangeCommentVotes= (comment_id, direction) => {
-        changeCommentVote(comment_id, direction).then(() => {
+        changeCommentVote(comment_id, direction)
             const newComments = this.state.comments.map(comment => {
                 if(comment._id === comment_id){
                     if(direction ==="up"){
@@ -76,8 +76,6 @@ e.target.onError= null
             })
             this.setState({comments:newComments})
         }
-    )
-    }
     DeleteComment = (comment_id, comment_createdBy_Id) => {
         if(comment_createdBy_Id === this.props.user._id){
             deleteComment(comment_id)
