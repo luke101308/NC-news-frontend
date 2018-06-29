@@ -30,7 +30,7 @@ class Comments extends Component {
         const comment = this.state.comment
         return (
             comments.length ? <div>
-              <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/>
+              {Object.keys(this.props.user).length ? <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/> : ""}
               <br/>
               {comments.map(comment => {
                   return <div className="Comment" key={comment._id}>
@@ -38,7 +38,7 @@ class Comments extends Component {
                         <span className="NeedsMargin">{comment.created_by.username}</span>
                         <span className="NeedsMargin">{comment.body}</span>
                         <div>Votes:{comment.votes}</div>
-                        <button onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}}>upvote</button>
+                        {<button onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}} >upvote</button>}
                         <button onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
                         <button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button>   
                     </div>
@@ -80,10 +80,10 @@ e.target.onError= null
     }
     DeleteComment = (comment_id, comment_createdBy_Id) => {
         if(comment_createdBy_Id === this.props.user._id){
-            deleteComment(comment_id).then(() => {
-                const newComments = this.state.comments.filter(comment => comment_id !== comment._id)
-                this.setState({comments:newComments}) 
-            })
+            deleteComment(comment_id)
+            const newComments = this.state.comments.filter(comment => comment_id !== comment._id)
+            this.setState({comments:newComments}) 
+            
         }
     }
 }
