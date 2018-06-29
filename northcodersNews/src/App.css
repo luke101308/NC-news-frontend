@@ -39,3 +39,13 @@
 .Delete{
   margin: 20px
 }
+
+.Nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  
+}
+
+.Button{
+border: 10px solid black;
+}
