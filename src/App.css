@@ -78,14 +78,14 @@ text-align:center;
 -webkit-appearance: button;
 text-decoration: none;
 color: rgb(0, 0, 0);
-font-size: 0.5rem
+font-size: 0.8rem
 }
 
 
 .SearchBar{
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 1.5fr 1fr 3.5fr; 
+  grid-template-rows: 1.5fr 1fr 2fr; 
   margin-left: 10%;
   margin-right: 10%;
   padding-top: 2rem
@@ -97,7 +97,7 @@ font-size: 0.5rem
 
 .SearchButton{
   grid-row-start:3;
-  overflow: 
+  font-size: 0.4rem 
 }
 
 .LoginPage{
