@@ -56,7 +56,7 @@ class Content extends React.Component {
                <Route path="/search" render={(props) => {
                 return <Search {...props} articles={this.state.articles}/>
             }}/>
-             <Route path="/" component={Homepage} />
+             <Route exact path="/" component={Homepage} />
             <Route component={Error404} />
             </Switch>
         </div>
