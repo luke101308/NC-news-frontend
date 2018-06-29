@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from "react-router-dom"
+import {Route, Switch} from "react-router-dom"
 import { getAllTopics, getAllArticles } from '../apiAccess';
 import AllTopics from "./ContentComponents/AllTopics"
 import AllArticles from './ContentComponents/AllArticles';
@@ -7,6 +7,8 @@ import ArticleFromId from "./ContentComponents/ArticleFromId"
 import ArticlesByTopic from "./ContentComponents/ArticlesByTopic"
 import Login from "./ContentComponents/Login"
 import UserByUsername from './ContentComponents/UserByUsername';
+import Search from "./ContentComponents/Search"
+import Error404 from "./ContentComponents/Error404" 
 
 class Content extends React.Component {
     state = {
@@ -35,6 +37,7 @@ class Content extends React.Component {
 
     render(props) {
         return <div className="Content">
+          <Switch>
            <Route exact path="/topics" render={() =>{
                return <AllTopics topics={this.state.topics}/>
            }}/>
@@ -44,12 +47,19 @@ class Content extends React.Component {
              <Route path="/login" render={() => {
                 return <Login login={this.props.login}/>
             }}/>
+             <Route path="/articles/undefined" render={(props) => {
+                return <Error404 {...props} user={this.props.user}/>
+            }}/>
             <Route path="/articles/:article_id" render={(props) => {
                 return <ArticleFromId {...props} user={this.props.user}/>
             }}/>
             <Route path="/topics/:topic_slug" component={ArticlesByTopic}/>
                <Route path="/users/:username" component={UserByUsername}/>
-            
+               <Route path="/search" render={(props) => {
+                return <Search {...props} articles={this.state.articles}/>
+            }}/>
+            <Route component={Error404} />
+            </Switch>
         </div>
     }
 }
