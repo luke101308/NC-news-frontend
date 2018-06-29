@@ -78,7 +78,7 @@ text-align:center;
 -webkit-appearance: button;
 text-decoration: none;
 color: rgb(0, 0, 0);
-font-size: 0.8rem
+font-size: 0.5rem
 }
 
 
@@ -97,7 +97,7 @@ font-size: 0.8rem
 
 .SearchButton{
   grid-row-start:3;
-  word-wrap: break-word
+  overflow: 
 }
 
 .LoginPage{
