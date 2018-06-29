@@ -1,9 +1,4 @@
 import React from 'react';
-import AllArticlesButton from "./NavComponents/AllArticlesButton"
-import AllTopicsButton from "./NavComponents/AllTopicsButton"
-import SearchButton from "./NavComponents/SearchButton"
-import LoginButton from "./NavComponents/LoginButton"
-import LogoutButton from "./NavComponents/LogoutButton"
 import {Link} from "react-router-dom"
 
 function Nav({user, logout}) {

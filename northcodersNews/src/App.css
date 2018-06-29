@@ -7,14 +7,16 @@
 }
 
 .Title {
-  background-color: aqua;
+  background-color: rgb(211, 202, 170);
   height: 10vh;
   line-height: 10vh;
   margin: 0;
+  font-family: serif;
 }
 
+
 .Content{
-  background-color: rgb(207, 35, 5);
+  background-image:url("./what-the-hex.png") ;
   grid-row-start: 3;
   grid-row-end: 4;
   overflow: auto;
@@ -45,9 +47,6 @@
   margin: 2em;
 }
 
-
-
-
 .CommentBody{
   grid-column-start: 1;
   grid-column-end: 3;
@@ -62,9 +61,6 @@
    grid-column-start:1;
    max-width: 5rem
  }
-
-
-
 
 .Nav{
   display:grid;
@@ -91,7 +87,8 @@ font-size: 0.9rem
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 40px 1fr 3em; 
   margin-left: 10%;
-  margin-right: 10%
+  margin-right: 10%;
+  padding-top: 2rem
 }
 .InputBar{
   grid-row-start: 2;

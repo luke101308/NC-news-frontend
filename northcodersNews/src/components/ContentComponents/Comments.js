@@ -60,7 +60,7 @@ e.target.onError= null
             this.setState({comments:newComments, comment: ''})
         })
     }
-    ChangeCommentVotes= (comment_id, direction) => {
+    ChangeCommentVotes= (comment_id, direction) => { 
         changeCommentVote(comment_id, direction)
             const newComments = this.state.comments.map(comment => {
                 if(comment._id === comment_id){
