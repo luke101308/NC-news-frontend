@@ -47,12 +47,8 @@ class Content extends React.Component {
             <Route path="/articles/:article_id" render={(props) => {
                 return <ArticleFromId {...props} user={this.props.user}/>
             }}/>
-            <Route path="/topics/:topic_slug" render={(props) => {
-                return <ArticlesByTopic {...props}/>
-            }}/>
-               <Route path="/users/:username" render={(props) => {
-                return <UserByUsername {...props}/>
-            }}/>
+            <Route path="/topics/:topic_slug" component={ArticlesByTopic}/>
+               <Route path="/users/:username" component={UserByUsername}/>
             
         </div>
     }
