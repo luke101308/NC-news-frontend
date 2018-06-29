@@ -9,6 +9,7 @@ import Login from "./ContentComponents/Login"
 import UserByUsername from './ContentComponents/UserByUsername';
 import Search from "./ContentComponents/Search"
 import Error404 from "./ContentComponents/Error404" 
+import Homepage from './ContentComponents/Homepage';
 
 class Content extends React.Component {
     state = {
@@ -55,6 +56,7 @@ class Content extends React.Component {
                <Route path="/search" render={(props) => {
                 return <Search {...props} articles={this.state.articles}/>
             }}/>
+             <Route path="/" component={Homepage} />
             <Route component={Error404} />
             </Switch>
         </div>
