@@ -6,6 +6,7 @@ import AllArticles from './ContentComponents/AllArticles';
 import ArticleFromId from "./ContentComponents/ArticleFromId"
 import ArticlesByTopic from "./ContentComponents/ArticlesByTopic"
 import Login from "./ContentComponents/Login"
+import UserByUsername from './ContentComponents/UserByUsername';
 
 class Content extends React.Component {
     state = {
@@ -48,6 +49,9 @@ class Content extends React.Component {
             }}/>
             <Route path="/topics/:topic_slug" render={(props) => {
                 return <ArticlesByTopic {...props}/>
+            }}/>
+               <Route path="/users/:username" render={(props) => {
+                return <UserByUsername {...props}/>
             }}/>
             
         </div>

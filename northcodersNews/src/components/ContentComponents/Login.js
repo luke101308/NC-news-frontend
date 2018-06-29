@@ -6,11 +6,10 @@ class Login extends Component {
         username: ''
     }
     render() {
-        console.log(this.props)
     return (
         <div>
         <input value={this.state.username} onChange={this.handleChange} placeholder="enter username"></input>
-        <Link to="../"><button onClick={() => {this.props.login(this.state.username)}}>Submit</button></Link>
+        <Link to={`/users/${this.state.username}`}><button onClick={() => {this.props.login(this.state.username)}}>Submit</button></Link>
     </div>
     );
     }
