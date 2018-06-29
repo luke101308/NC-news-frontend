@@ -10,19 +10,19 @@ function Nav({user, logout}) {
     return (
         <nav className="Nav">   
         <Link to="/articles" className="Button">
-            <AllArticlesButton />
+        All Articles
         </Link>
         <Link to="/topics" className="Button">
-            <AllTopicsButton />
+            All Topics
         </Link>
         <Link to="/search" className="Button"> 
-        <SearchButton />
+        Search
         </Link>
-        {Object.keys(user).length ? <Link to="/" className="Button">
-        <LogoutButton logout={logout}/> 
+        {Object.keys(user).length ? <Link to="/" className="Button" onClick={logout}>
+        Logout 
         </Link> :  
         <Link to="/login" className="Button">
-        <LoginButton /> 
+        Login
         </Link> }
         </nav>
     );
