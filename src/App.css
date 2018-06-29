@@ -86,8 +86,8 @@ font-size: 0.8rem
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 1.5fr 1fr 2fr; 
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   padding-top: 2rem
 }
 .InputBar{
