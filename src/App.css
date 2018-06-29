@@ -97,8 +97,6 @@ font-size: 0.8rem
 
 .SearchButton{
   grid-row-start:3;
-  height: 3rem;
-  width: 7rem
 }
 
 .LoginPage{
