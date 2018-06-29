@@ -7,9 +7,21 @@ class Login extends Component {
     }
     render() {
     return (
-        <div>
-        <input value={this.state.username} onChange={this.handleChange} placeholder="enter username"></input>
-        <Link to={`/users/${this.state.username}`}><button onClick={() => {this.props.login(this.state.username)}}>Submit</button></Link>
+        <div class="LoginPage">
+            <input 
+                value={this.state.username}
+                onChange={this.handleChange}
+                placeholder="enter username"
+                className="Input"
+                >
+            </input>
+        <Link 
+            to={`/users/${this.state.username}`} 
+            onClick={() => {this.props.login(this.state.username)}}
+            className="Button"
+            >
+            Submit
+        </Link>
     </div>
     );
     }

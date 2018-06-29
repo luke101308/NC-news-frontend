@@ -45,10 +45,7 @@ class Content extends React.Component {
                return <AllArticles articles={this.state.articles}/>
             }}/>
              <Route path="/login" render={() => {
-                return <Login login={this.props.login}/>
-            }}/>
-             <Route path="/articles/undefined" render={(props) => {
-                return <Error404 {...props} user={this.props.user}/>
+                return <Login login={this.props.login} userError={this.props.userError}/>
             }}/>
             <Route path="/articles/:article_id" render={(props) => {
                 return <ArticleFromId {...props} user={this.props.user}/>

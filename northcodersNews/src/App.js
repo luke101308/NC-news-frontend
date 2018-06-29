@@ -6,14 +6,15 @@ import {findUser} from "./apiAccess"
 
 class App extends Component {
   state = {
-    user: {}
+    user: {},
+    userError: false  
   }
   render() {
     return (
       <div className="App">
       <h1 className="Title">Northcoders News</h1>
       <Nav user={this.state.user} logout={this.logout}/>
-      <Content user={this.state.user} login={this.logIn}/>
+      <Content user={this.state.user} login={this.logIn} userError={this.state.userError}/>
       </div>
     );
   }

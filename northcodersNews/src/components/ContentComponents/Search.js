@@ -9,12 +9,12 @@ class Search extends Component {
         const input = this.state.input
         console.log(this.findArticleId())
         return (
-          <div>
-              <input value ={input} onChange={this.handleChange}/>
+          <div className="SearchBar">
+              <input value ={input} onChange={this.handleChange} className="InputBar Input"/>
               <br/>
-              <Link to={`./users/${input}`}><button>Search Users by Username</button></Link>
-              <Link to={`./articles/${this.findArticleId()}`}><button>Search Articles by Title</button></Link>
-              <Link to={`./topics/${input}`}><button>Search Topics by Topic Name</button></Link>
+              <Link to={`./users/${input}`} className="Button SearchButton">Search Users by Username</Link>
+              <Link to={`./articles/${this.findArticleId()}`} className="Button SearchButton">Search Articles by Title</Link>
+              <Link to={`./topics/${input}`} className="Button SearchButton">Search Topics by Topic Name</Link>
           </div>
         );
     }

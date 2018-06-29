@@ -29,17 +29,17 @@ class Comments extends Component {
         const comments = this.state.comments
         const comment = this.state.comment
         return (
-            comments.length ? <div>
+            comments.length ? <div className="CommentGrid">
               {Object.keys(this.props.user).length ? <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/> : ""}
               <br/>
               {comments.map(comment => {
                   return <div className="Comment" key={comment._id}>
                         <img className="Avatar" src={comment.created_by.avatar_url} onError={this.HandleError} alt="Avatars broken - please submit a bug report"/>
-                        <span className="NeedsMargin">{comment.created_by.username}</span>
-                        <span className="NeedsMargin">{comment.body}</span>
-                        <div>Votes:{comment.votes}</div>
-                        {<button onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}} >upvote</button>}
-                        <button onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
+                        <span className="NeedsMargin CommentCreator">{comment.created_by.username}</span>
+                        <span className="NeedsMargin CommentBody">{comment.body}</span>
+                        <div className="VotesTally">Votes:{comment.votes}</div>
+                        {<button className="VoteButton" onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}} >upvote</button>}
+                        <button className="VoteButton" onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
                         {comment.created_by._id === this.props.user._id ?<button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button> : "" } 
                     </div>
               })}  
@@ -56,7 +56,7 @@ e.target.onError= null
     }
     handleClick = () => {
         postComment(this.props.article._id, this.state.comment, this.props.user).then(newComment => {
-        const newComments = [...this.state.comments, {...newComment, created_by:this.props.user}]
+        const newComments = [...this.state.comments, {...newComment, created_by:this.props.user}].reverse()
             this.setState({comments:newComments, comment: ''})
         })
     }

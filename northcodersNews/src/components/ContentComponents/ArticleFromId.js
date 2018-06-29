@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import {getArticleById} from "../../apiAccess"
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import Comments from "./Comments"
 import {changeArticleVote} from "../../apiAccess"
 
 class ArticleFromId extends Component {
     state = {
         article: {},
-        comment: ''
+        comment: '',
+        articleError: false
     }
 
     componentDidMount(){
-        getArticleById(this.props.match.params.article_id).then(article => {
+        getArticleById(this.props.match.params.article_id)
+        .then(article => {
             this.setState({article})
-        })
+        }).catch(() => this.setState({articleError: true}))
     }
     render() {
         const article = this.state.article
         return (
+            !this.state.articleError ?
             Object.keys(article).length ?<div>
                 <h3>{article.title}</h3>
                 <p>{article.body}</p>
@@ -29,11 +32,11 @@ class ArticleFromId extends Component {
                 <button onClick={() => {this.ChangeArticleVotes(article._id, 'down')}}>downvote</button>   
                 <br /><br /><br />
                 <Comments article={article} user={this.props.user} />
-            </div> : ""
+            </div> : "" : <Redirect to="../404"></Redirect>
         );
     }
     ChangeArticleVotes= (article_id, direction) => {
-        changeArticleVote(article_id, direction).then(() => {
+        changeArticleVote(article_id, direction)
             const NewArticle = {...this.state.article}
             if(direction ==="up"){
                         NewArticle.votes = NewArticle.votes + 1
@@ -41,8 +44,6 @@ class ArticleFromId extends Component {
                         NewArticle.votes = NewArticle.votes - 1
                     }
             this.setState({article: NewArticle})
-        }
-    )
     }
 }
 
