@@ -4,35 +4,32 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article. Comments can also be up or down voted. A user can add comments and remove any comments which they have added.
 
-This review sprint should consolidate your understanding of making a [C.R.U.D](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application from a front end perspective.
 
-### Objectives
-1. Pull together all the front-end skills, technologies and best practises you have learnt over the past three weeks.
-2. Make asynchronous API calls to your own server.
-4. Use HTTP request types to interact with your backend, and HTTP response codes to update your UI accordingly.
+## Prerequisites 
 
-### What to do
+Node version 8.1.10
 
-Use the generic react-project-checklist as a guide to setting up your app. Here are some project-specific things to bear in mind:
+##Installing
 
-1. Have a look at your API endpoints and at Reddit. Think about what data you have available, and how you will structure your application. What routes will your application have? What articles will you choose to display on the main page?
+1. install all dependencies by running npm i in the console
+2. to access the website, use the npm start console.commands
 
-2. Think how you will isolate the concerns of your project - the structure of your components, the sourcing of your data, the styling.
 
-3. What sort of routing does Reddit use? What sort of specificity do you think you will need? Remember, your urls don't have to directly correspond to your api endpoints, but they will provide some guidance.
+##Further information
 
-4. Think about what data each component will need. Where will it come from? When should components find their own data and when should they load it themselves? Focus on loading a list of articles for your front page first of all.
+Website is hosted on  https://nc-news-production-frontend.herokuapp.com/ 
 
-5. Consider more complex functionality: how do you want to allow changes to your database? Think about how you will attribute users to posted comments etc. How will you know what comments/articles a user should be allowed to delete? How about sorting data, or paginating responses?
+if you wish to post comments - suggested login is grumpy19, but any username found in the comments will work. creation of new users to be implemented.
 
-6. How are you going to make this a fluid and engaging experience for users, so they want to come back for more?
+current available actions are - 
+1. show list of articles
+2. show list of topics. 
+3. Search for user by username, article by article title, topic by topic name
+4. login as user. - no passwords currently implemented.
+5. display individual article - with comments
+6. post a new comment - only when logged in 
+7. vote on articles and comments  
 
-### Extra credit
+##Authors
 
-1. Create a route which shows which users have been most active adding articles and comments
-2. Make this route sort the users by how popular they are based on an aggregation of their article and comment vote counts
-3. Implement a filter which re-orders comments based on either the time they were added, or how many votes they have got.
-
-### Important
-
-This sprint is among the ones we'll ask you to complete in order to put you forward for jobs. Put a little bit of love into it! :)
+Luke Birkett
