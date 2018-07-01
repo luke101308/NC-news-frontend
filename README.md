@@ -19,7 +19,7 @@ Node version 8.1.10
 
 Website is hosted on  https://nc-news-production-frontend.herokuapp.com/ 
 
-if you wish to post comments - suggested login is grumpy19, but any username found in the comments will work. creation of new users to be implemented.
+if you wish to post comments - suggested login is grumpy19, but any username found in the comments will work. creation of new users is currently not possible, but would likely be handled by a third party service.
 
 current available actions are - 
 1. show list of articles
