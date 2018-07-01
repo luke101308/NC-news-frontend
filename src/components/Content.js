@@ -41,7 +41,7 @@ class Content extends React.Component {
         return <div className="Content">
           <Switch>
            <Route exact path="/topics" render={() =>{
-               return <AllTopics topics={this.state.topics}/>
+               return <AllTopics topics={this.state.topics} user={this.props.user}/>
            }}/>
            <Route exact path="/articles" render={() => {
                return <AllArticles articles={this.state.articles}/>

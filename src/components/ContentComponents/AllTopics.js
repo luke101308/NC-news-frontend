@@ -1,12 +1,17 @@
 import React from 'react';
 import {NavLink} from "react-router-dom"
 
-function AllTopics({topics}) {
-   
+function AllTopics({topics, user}) {
         return (
             <div className="Display">
                 {topics.map(topic => {
-                   return <p  key={topic.title}><NavLink className="NeedsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink><NavLink className="NeedsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink><br/><br/></p>                
+                   return (
+                   <p  key={topic.title}>
+                    <NavLink className="NeedsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink>
+                    {Object.keys(user).length ? <NavLink className="NeedsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink> : ""}
+                    <br/>
+                    <br/>
+                   </p>  )              
                 })}
             </div>
         );
