@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom"
-import { getAllTopics, getAllArticles } from '../apiAccess';
+import { getAllTopics, getAllArticles} from '../apiAccess';
 import AllTopics from "./ContentComponents/AllTopics"
 import AllArticles from './ContentComponents/AllArticles';
 import ArticleFromId from "./ContentComponents/ArticleFromId"
@@ -10,6 +10,7 @@ import UserByUsername from './ContentComponents/UserByUsername';
 import Search from "./ContentComponents/Search"
 import Error404 from "./ContentComponents/Error404" 
 import Homepage from './ContentComponents/Homepage';
+import PostArticle from "./ContentComponents/PostArticle"
 
 class Content extends React.Component {
     state = {
@@ -51,7 +52,8 @@ class Content extends React.Component {
             <Route path="/articles/:article_id" render={(props) => {
                 return <ArticleFromId {...props} user={this.props.user}/>
             }}/>
-            <Route path="/topics/:topic_slug" component={ArticlesByTopic}/>
+            <Route exact path="/topics/:topic_slug" component={ArticlesByTopic}/>
+            <Route path="/topics/:topic_slug/post" component={PostArticle}/>
                <Route path="/users/:username" component={UserByUsername}/>
                <Route path="/search" render={(props) => {
                 return <Search {...props} articles={this.state.articles}/>
