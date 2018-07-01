@@ -28,7 +28,8 @@ current available actions are -
 4. login as user. - no passwords currently implemented.
 5. display individual article - with comments
 6. post a new comment - only when logged in 
-7. vote on articles and comments  
+7. vote on articles and comments
+8. post a new article  
 
 ##Authors
 
