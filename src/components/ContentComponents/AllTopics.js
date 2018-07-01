@@ -6,7 +6,7 @@ function AllTopics({topics}) {
         return (
             <div className="Display">
                 {topics.map(topic => {
-                   return <p  key={topic.title}><NavLink className="NeedsMargin" to={`../topics/${topic.title.toLowerCase()}`} key={topic.title}>{topic.title}</NavLink><NavLink className="NeedsMargin" to={`./topics/${topic.title.toLowerCase()}/post`}>   Post an article in {topic.title}</NavLink><br/><br/></p>                
+                   return <p  key={topic.title}><NavLink className="NeedsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink><NavLink className="NeedsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink><br/><br/></p>                
                 })}
             </div>
         );
