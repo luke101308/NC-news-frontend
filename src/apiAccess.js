@@ -56,3 +56,13 @@ export const findUser = (username) => {
       return res.data.user
   })
 }
+
+export const postArticle = (title, body, user) => {
+    return axios.post(`${url}/topics/:topic_slug/articles`, {
+        title,
+        body,
+        created_by: user._id
+    }).then((res) => {
+        return res.data.article
+    })
+}
