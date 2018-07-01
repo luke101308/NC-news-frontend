@@ -29,10 +29,10 @@ class Comments extends Component {
         const comments = this.state.comments
         const comment = this.state.comment
         return (
-            comments.length ? <div className="CommentGrid">
+           <div className="CommentGrid">
               {Object.keys(this.props.user).length ? <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/> : ""}
               <br/>
-              {comments.map(comment => {
+              {comments? comments.map(comment => {
                   return <div className="Comment" key={comment._id}>
                         <img className="Avatar" src={comment.created_by.avatar_url} onError={this.HandleError} alt="Avatars broken - please submit a bug report"/>
                         <span className="NeedsMargin CommentCreator">{comment.created_by.username}</span>
@@ -42,8 +42,8 @@ class Comments extends Component {
                         <button className="VoteButton" onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
                         {comment.created_by._id === this.props.user._id ?<button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button> : "" } 
                     </div>
-              })}  
-            </div> : ""
+              }) : ''}  
+            </div>
         );
     }
 
