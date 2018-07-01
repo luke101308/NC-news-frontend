@@ -35,7 +35,7 @@
 
 .Comment{
   display:grid;
-  grid-template-columns: 1fr 5fr; 
+  grid-template-columns: 1fr 4fr 1fr; 
   grid-template-rows: 4fr 4fr 1fr 1fr;
   align-items: center;
 
@@ -49,17 +49,22 @@
 
 .CommentBody{
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
  }
 
  .VotesTally{
    grid-column-start: 1;
-   grid-column-end: 3
+   grid-column-end: 4
  }
 
  .VoteButton{
    grid-column-start:1;
    max-width: 5rem
+ }
+
+ .Delete{
+   grid-column-start: 3;
+   grid-column-end: 4
  }
 
 .Nav{
