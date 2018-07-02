@@ -12,13 +12,13 @@ class Login extends Component {
                 value={this.state.username}
                 onChange={this.handleChange}
                 placeholder="enter username"
-                className="Input"
+                className="Input Login"
                 >
             </input>
         <Link 
             to={`/users/${this.state.username}`} 
             onClick={() => {this.props.login(this.state.username)}}
-            className="Button"
+            className="Button Login"
             >
             Submit
         </Link>
