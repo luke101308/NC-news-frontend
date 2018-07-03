@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 function Nav({user, logout}) {
     return (
         <nav className="Nav">   
-        <Link to="/articles" className="Button">
+        <Link to="/articles" className="kjhkj">
         All Articles
         </Link>
         <Link to="/topics" className="Button">
