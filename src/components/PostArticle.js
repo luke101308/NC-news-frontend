@@ -9,7 +9,6 @@ class PostArticle extends Component {
         newArticleId: ''
     }
     render() {
-        console.log('hi')
         return !this.state.newArticleId ? (
             <div>
                 <br/>
