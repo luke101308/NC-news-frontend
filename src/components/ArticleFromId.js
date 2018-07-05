@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {getArticleById} from "../../apiAccess"
+import {getArticleById} from "../apiAccess"
 import {Link, Redirect} from "react-router-dom"
 import Comments from "./Comments"
-import {changeArticleVote} from "../../apiAccess"
+import {changeArticleVote} from "../apiAccess"
 
 class ArticleFromId extends Component {
     state = {
@@ -18,7 +18,7 @@ class ArticleFromId extends Component {
         }).catch(() => this.setState({articleError: true}))
     }
     render() {
-        const article = this.state.article
+        const {article} = this.state
         return (
             !this.state.articleError ?
             Object.keys(article).length ?<div>

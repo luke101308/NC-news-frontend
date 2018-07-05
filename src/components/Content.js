@@ -1,16 +1,16 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom"
 import { getAllTopics, getAllArticles} from '../apiAccess';
-import AllTopics from "./ContentComponents/AllTopics"
-import AllArticles from './ContentComponents/AllArticles';
-import ArticleFromId from "./ContentComponents/ArticleFromId"
-import ArticlesByTopic from "./ContentComponents/ArticlesByTopic"
-import Login from "./ContentComponents/Login"
-import UserByUsername from './ContentComponents/UserByUsername';
-import Search from "./ContentComponents/Search"
-import Error404 from "./ContentComponents/Error404" 
-import Homepage from './ContentComponents/Homepage';
-import PostArticle from "./ContentComponents/PostArticle"
+import AllTopics from "./AllTopics"
+import AllArticles from './AllArticles';
+import ArticleFromId from "./ArticleFromId"
+import ArticlesByTopic from "./ArticlesByTopic"
+import Login from "./Login"
+import UserByUsername from './UserByUsername';
+import Search from "./Search"
+import Error404 from "./Error404" 
+import Homepage from './Homepage';
+import PostArticle from "./PostArticle"
 
 class Content extends React.Component {
     state = {

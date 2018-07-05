@@ -47,7 +47,7 @@ export const changeArticleVote = (article_id, direction) => {
     return axios.put(`${url}/articles/${article_id}?vote=${direction}`)
 }
 
-export const deleteComment = (comment_id) => {
+export const deleteCommentById = (comment_id) => {
     return axios.delete(`${url}/comments/${comment_id}`)
 }
 

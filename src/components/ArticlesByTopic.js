@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getArticlesByTopic} from "../../apiAccess"
+import {getArticlesByTopic} from "../apiAccess"
 import {NavLink, Redirect} from "react-router-dom"
 
 class ArticlesByTopic extends Component {

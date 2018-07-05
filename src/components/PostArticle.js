@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {postArticle} from "../../apiAccess"
+import {postArticle} from "../apiAccess"
 import {Redirect} from "react-router-dom"
 
 class PostArticle extends Component {

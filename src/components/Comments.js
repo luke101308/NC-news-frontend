@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {getCommentsByArticleId} from "../../apiAccess"
+import {getCommentsByArticleId, postComment, changeCommentVote, deleteCommentById} from "../apiAccess"
 import defaultAvatar from "./default_avatar.png"
 import PostComment from "./PostComment"
-import {postComment, changeCommentVote, deleteComment} from "../../apiAccess"
 
 
 class Comments extends Component {
@@ -26,28 +25,27 @@ class Comments extends Component {
     }
 
     render() {
-        const comments = this.state.comments
-        const comment = this.state.comment
+        const {comments, comment} = this.state
         return (
            <div className="CommentGrid">
               {Object.keys(this.props.user).length ? <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/> : ""}
               <br/>
               {comments? comments.map(comment => {
                   return <div className="Comment" key={comment._id}>
-                        <img className="Avatar" src={comment.created_by.avatar_url} onError={this.HandleError} alt="Avatars broken - please submit a bug report"/>
+                        <img className="Avatar" src={comment.created_by.avatar_url} onError={this.handleError} alt="Avatars broken - please submit a bug report"/>
                         <span className="NeedsMargin CommentCreator">{comment.created_by.username}</span>
                         <span className="NeedsMargin CommentBody">{comment.body}</span>
                         <div className="VotesTally">Votes:{comment.votes}</div>
-                        {<button className="VoteButton" onClick={() => {this.ChangeCommentVotes(comment._id, 'up')}} >upvote</button>}
-                        <button className="VoteButton" onClick={() => {this.ChangeCommentVotes(comment._id, 'down')}}>downvote</button>
-                        {comment.created_by._id === this.props.user._id ?<button onClick={() => {this.DeleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button> : "" } 
+                        {<button className="VoteButton" onClick={() => {this.changeCommentVotes(comment._id, 'up')}} >upvote</button>}
+                        <button className="VoteButton" onClick={() => {this.changeCommentVotes(comment._id, 'down')}}>downvote</button>
+                        {comment.created_by._id === this.props.user._id ?<button onClick={() => {this.deleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button> : "" } 
                     </div>
               }) : ''}  
             </div>
         );
     }
 
-    HandleError = (e) => {
+    handleError = (e) => {
 e.target.src= defaultAvatar
 e.target.onError= null
     }
@@ -60,7 +58,7 @@ e.target.onError= null
             this.setState({comments:newComments, comment: ''})
         })
     }
-    ChangeCommentVotes= (comment_id, direction) => { 
+    changeCommentVotes= (comment_id, direction) => { 
         changeCommentVote(comment_id, direction)
             const newComments = this.state.comments.map(comment => {
                 if(comment._id === comment_id){
@@ -76,9 +74,9 @@ e.target.onError= null
             })
             this.setState({comments:newComments})
         }
-    DeleteComment = (comment_id, comment_createdBy_Id) => {
+    deleteComment = (comment_id, comment_createdBy_Id) => {
         if(comment_createdBy_Id === this.props.user._id){
-            deleteComment(comment_id)
+            deleteCommentById(comment_id)
             const newComments = this.state.comments.filter(comment => comment_id !== comment._id)
             this.setState({comments:newComments}) 
             

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {findUser} from "../../apiAccess"
+import {findUser} from "../apiAccess"
 import defaultAvatar from "./default_avatar.png"
 
 
