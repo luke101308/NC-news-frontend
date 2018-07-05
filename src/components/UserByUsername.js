@@ -16,7 +16,7 @@ componentDidMount(){
 
 
     render() {
-        const user = this.state.user
+        const {user} = this.state
         return (
             Object.keys(this.state.user).length? <div className ="User">
               <h1>{user.username}</h1>  

@@ -15,7 +15,7 @@ class ArticlesByTopic extends Component {
         }).catch(() => this.setState({topicError: true}))
     }
     render() {
-        const articles = this.state.articles
+        const {articles} = this.state
         return (
             !this.state.topicError ?
             <div>

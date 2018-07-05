@@ -6,7 +6,7 @@ class Search extends Component {
         input: ''
     }
     render() {
-        const input = this.state.input
+        const {input} = this.state
         return (
           <div className="SearchBar">
               <input value ={input} onChange={this.handleChange} className="InputBar Input"/>
