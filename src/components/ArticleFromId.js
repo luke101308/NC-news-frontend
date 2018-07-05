@@ -21,28 +21,29 @@ class ArticleFromId extends Component {
         const {article} = this.state
         return (
             !this.state.articleError ?
-            Object.keys(article).length ?<div>
-                <h3>{article.title}</h3>
-                <p>{article.body}</p>
-                <br/>
-                {article.created_by ? <p> created by:{article.created_by.username}</p> : ''}
-                {article.belongs_to ? <p>see more from <Link to={`../topics/${article.belongs_to}`}>{article.belongs_to}</Link></p> : ''}
-                <p>Votes: {article.votes}</p>
-                <button onClick={() => {this.changeArticleVotes(article._id, 'up')}}>upvote</button>
-                <button onClick={() => {this.changeArticleVotes(article._id, 'down')}}>downvote</button>   
-                <br /><br /><br />
-                <Comments article={article} user={this.props.user} />
-            </div> : "" : <Redirect to="../404"></Redirect>
+            Object.keys(article).length &&
+                <div>
+                    <h3>{article.title}</h3>
+                    <p>{article.body}</p>
+                    <br/>
+                    {article.created_by && <p> created by:{article.created_by.username}</p>}
+                    {article.belongs_to && <p>see more from <Link to={`../topics/${article.belongs_to}`}>{article.belongs_to}</Link></p> }
+                    <p>Votes: {article.votes}</p>
+                    <button onClick={() => {this.changeArticleVotes(article._id, 'up')}}>upvote</button>
+                    <button onClick={() => {this.changeArticleVotes(article._id, 'down')}}>downvote</button>   
+                    <br /><br /><br />
+                    <Comments article={article} user={this.props.user} />
+                </div> : <Redirect to="../404"></Redirect>
         );
     }
     changeArticleVotes= (article_id, direction) => {
         changeArticleVote(article_id, direction)
             const NewArticle = {...this.state.article}
             if(direction ==="up"){
-                        NewArticle.votes = NewArticle.votes + 1
-                    }else{
-                        NewArticle.votes = NewArticle.votes - 1
-                    }
+                NewArticle.votes = NewArticle.votes + 1
+            }else{
+                NewArticle.votes = NewArticle.votes - 1
+            }
             this.setState({article: NewArticle})
     }
 }

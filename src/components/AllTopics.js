@@ -6,12 +6,12 @@ function AllTopics({topics, user}) {
             <div className="Display">
                 {topics.map(topic => {
                    return (
-                   <p  key={topic.title}>
-                    <NavLink className="NeedsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink>
-                    {Object.keys(user).length ? <NavLink className="NeedsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink> : ""}
-                    <br/>
-                    <br/>
-                   </p>  )              
+                        <p  key={topic.title}>
+                            <NavLink className="NeedsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink>
+                            {Object.keys(user).length ? <NavLink className="NeedsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink> : ""}
+                            <br/>
+                            <br/>
+                        </p>  )              
                 })}
             </div>
         );

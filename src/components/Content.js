@@ -39,14 +39,14 @@ class Content extends React.Component {
 
     render(props) {
         return <div className="Content">
-          <Switch>
-           <Route exact path="/topics" render={() =>{
-               return <AllTopics topics={this.state.topics} user={this.props.user}/>
-           }}/>
-           <Route exact path="/articles" render={() => {
-               return <AllArticles articles={this.state.articles}/>
+        <Switch>
+            <Route exact path="/topics" render={() =>{
+                return <AllTopics topics={this.state.topics} user={this.props.user}/>
             }}/>
-             <Route path="/login" render={() => {
+            <Route exact path="/articles" render={() => {
+                return <AllArticles articles={this.state.articles}/>
+            }}/>
+            <Route path="/login" render={() => {
                 return <Login login={this.props.login} userError={this.props.userError}/>
             }}/>
             <Route path="/articles/:article_id" render={(props) => {
@@ -62,7 +62,7 @@ class Content extends React.Component {
             }}/>
              <Route exact path="/" component={Homepage} />
             <Route component={Error404} />
-            </Switch>
+        </Switch>
         </div>
     }
 }

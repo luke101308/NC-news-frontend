@@ -23,7 +23,7 @@ class Search extends Component {
     findArticleId = () => {
         const articleInfo = this.props.articles.find((article) => {
             return article.title.toLowerCase() === this.state.input.toLowerCase()})
-            if (articleInfo) return articleInfo._id
+        if (articleInfo) return articleInfo._id
     }
 }
 

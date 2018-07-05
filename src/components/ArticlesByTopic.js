@@ -19,9 +19,9 @@ class ArticlesByTopic extends Component {
         return (
             !this.state.topicError ?
             <div>
-            {articles.length ? articles.map(article => {
-                   return <p key={article._id}><NavLink to={`/articles/${article._id}`} >{article.title}</NavLink></p>
-                }) : ''}
+            {articles.length && articles.map(article => {
+                return <p key={article._id}><NavLink to={`/articles/${article._id}`} >{article.title}</NavLink></p>
+            })}
             </div> : <Redirect to="../404"/>
         );
     }

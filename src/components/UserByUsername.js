@@ -28,7 +28,7 @@ componentDidMount(){
     handleError = (e) => {
         e.target.src= defaultAvatar
         e.target.onError= null
-            }
+    }
 }
 
 export default UserByUsername;

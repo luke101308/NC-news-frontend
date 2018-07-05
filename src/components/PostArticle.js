@@ -16,7 +16,8 @@ class PostArticle extends Component {
                 <textarea rows="10" cols="50" className="Input" value={this.state.body} onChange={this.handleBodyChange} placeholder="Body"></textarea><br/>
                 <button onClick={this.handleClick}>Submit</button>
             </div>
-        ) : <Redirect to={`../../../articles/${this.state.newArticleId}`}/>
+        ) 
+        : <Redirect to={`../../../articles/${this.state.newArticleId}`}/>
     }
     handleTitleChange= (e) => {
         this.setState({title: e.target.value})
