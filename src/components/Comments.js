@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {getCommentsByArticleId, postComment, changeCommentVote, deleteCommentById} from "../apiAccess"
-import defaultAvatar from "./default_avatar.png"
+import defaultAvatar from "../img_files/default_avatar.png"
 import PostComment from "./PostComment"
 
 
