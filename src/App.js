@@ -14,6 +14,7 @@ class App extends Component {
       <div className="App">
       <h1 className="Title">Northcoders News</h1>
       <Nav user={this.state.user} logout={this.logout}/>
+      <div  className="User">{this.state.user.username ? this.state.user.username + " is logged in" : "Please log in"}</div>
       <Content user={this.state.user} login={this.logIn} userError={this.state.userError}/>
       </div>
     );

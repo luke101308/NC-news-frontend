@@ -18,7 +18,7 @@ componentDidMount(){
     render() {
         const {user} = this.state
         return (
-            Object.keys(this.state.user).length? <div className ="User">
+            Object.keys(this.state.user).length? <div>
               <h1>{user.username}</h1>  
               <img className="Avatar" src={user.avatar_url} onError={this.handleError} alt="Avatars broken - please submit a bug report"/>
               <p>Name:{user.name}</p>            
