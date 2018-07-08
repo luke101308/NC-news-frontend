@@ -29,20 +29,22 @@ class ArticleFromId extends Component {
                     {article.created_by && <p> created by:{article.created_by.username}</p>}
                     {article.belongs_to && <p>see more from <Link to={`../topics/${article.belongs_to}`}>{article.belongs_to}</Link></p> }
                     <p>Votes: {article.votes}</p>
-                    <button onClick={() => {this.changeArticleVotes(article._id, 'up')}}>upvote</button>
-                    <button onClick={() => {this.changeArticleVotes(article._id, 'down')}}>downvote</button>   
+                    <button onClick={(e) => {this.changeArticleVotes(article._id, 'up',e)}} disabled={false}>upvote</button>
+                    <button onClick={(e) => {this.changeArticleVotes(article._id, 'down', e)}} disabled={false}>downvote</button>   
                     <br /><br /><br />
                     <Comments article={article} user={this.props.user} />
                 </div> : <Redirect to="../404"></Redirect>
         );
     }
-    changeArticleVotes= (article_id, direction) => {
+    changeArticleVotes= (article_id, direction, e) => {
         changeArticleVote(article_id, direction)
             const NewArticle = {...this.state.article}
             if(direction ==="up"){
                 NewArticle.votes = NewArticle.votes + 1
+                e.target.disabled= true
             }else{
                 NewArticle.votes = NewArticle.votes - 1
+                e.target.disabled= true
             }
             this.setState({article: NewArticle})
     }
