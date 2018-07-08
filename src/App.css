@@ -1,3 +1,5 @@
+/* page container */
+
 .App {
   text-align: center;
   display: grid;
@@ -14,12 +16,27 @@
   font-family: serif;
 }
 
+.Nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  
+}
 
 .Content{
   background-image:url("./what-the-hex.png") ;
   grid-row-start: 3;
   grid-row-end: 4;
   overflow: auto;
+}
+
+/* user comments */
+
+.CommentContainer{
+  display:grid;
+  grid-template-columns: 1fr 4fr 1fr; 
+  grid-template-rows: 4fr 4fr 1fr 1fr;
+  align-items: center;
+
 }
 
 .Avatar{
@@ -29,17 +46,28 @@
   grid-column-start:1
 }
 
-.NeedsMargin{
-  margin: 10px
+.CommentBody{
+  grid-column-start: 1;
+  grid-column-end: 4;
+ }
+
+ .Delete{
+  grid-column-start: 3;
+  grid-column-end: 4
 }
 
-.Comment{
-  display:grid;
-  grid-template-columns: 1fr 4fr 1fr; 
-  grid-template-rows: 4fr 4fr 1fr 1fr;
-  align-items: center;
 
+.VotesTally{
+  grid-column-start: 1;
+  grid-column-end: 4
 }
+
+
+.VoteButton{
+  grid-column-start:1;
+  max-width: 5rem
+}
+
 
 .CommentCreator{
   grid-row-start: 1;
@@ -47,45 +75,8 @@
   margin: 2em;
 }
 
-.CommentBody{
-  grid-column-start: 1;
-  grid-column-end: 4;
- }
 
- .VotesTally{
-   grid-column-start: 1;
-   grid-column-end: 4
- }
-
- .VoteButton{
-   grid-column-start:1;
-   max-width: 5rem
- }
-
- .Delete{
-   grid-column-start: 3;
-   grid-column-end: 4
- }
-
-.Nav{
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
-  
-}
-
-.Button{
-background-color: rgb(221, 221, 221);
-border: .5px solid black;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align:center;
--webkit-appearance: button;
-text-decoration: none;
-color: rgb(0, 0, 0);
-font-size: 0.8rem
-}
-
+/* Search Page layout styling */
 
 .SearchBar{
   display: grid;
@@ -105,6 +96,8 @@ font-size: 0.8rem
 
 }
 
+/* Login Page layout styling */
+
 .LoginPage{
   display: grid;
   grid-template-columns: 1fr;
@@ -121,4 +114,23 @@ font-size: 0.8rem
   margin-right: 20%
 }
 
+/* reusable CSS */
 
+
+.Button{
+  background-color: rgb(221, 221, 221);
+  border: .5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  -webkit-appearance: button;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 0.8rem
+  }
+  
+  
+  .AddsMargin{
+    margin: 10px
+  }
