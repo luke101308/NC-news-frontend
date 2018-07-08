@@ -36,8 +36,8 @@ class Comments extends Component {
                             <span className="AddsMargin CommentCreator">{comment.created_by.username}</span>
                             <span className="AddsMargin CommentBody">{comment.body}</span>
                             <div className="VotesTally">Votes:{comment.votes}</div>
-                            {<button className="VoteButton" onClick={() => {this.changeCommentVotes(comment._id, 'up')}} >upvote</button>}
-                            <button className="VoteButton" onClick={() => {this.changeCommentVotes(comment._id, 'down')}}>downvote</button>
+                            <button className="VoteButton" onClick={(e) => {this.changeCommentVotes(comment._id, 'up', e)}} disabled ={false}>upvote</button>
+                            <button className="VoteButton" onClick={(e) => {this.changeCommentVotes(comment._id, 'down', e)}} disabled ={false}>downvote</button>
                             {comment.created_by._id === this.props.user._id ?<button onClick={() => {this.deleteComment(comment._id, comment.created_by._id)}} className="Delete">delete</button> : "" } 
                         </div>
               })}  
@@ -58,14 +58,16 @@ class Comments extends Component {
             this.setState({comments:newComments, comment: ''})
         })
     }
-    changeCommentVotes= (comment_id, direction) => { 
+    changeCommentVotes= (comment_id, direction, e) => {
         changeCommentVote(comment_id, direction)
         const newComments = this.state.comments.map(comment => {
             if(comment._id === comment_id){
                 if(direction ==="up"){
                     comment.votes = comment.votes + 1
+                    e.target.disabled = true
                 }else{
                     comment.votes = comment.votes - 1
+                    e.target.disabled = true
                 }
                 return comment
             }else{
