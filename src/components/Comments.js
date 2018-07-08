@@ -28,13 +28,13 @@ class Comments extends Component {
         const {comments, comment} = this.state
         return (
            <div className="CommentGrid">
-              {Object.keys(this.props.user).length ? <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/> : '' }
+              {Object.keys(this.props.user).length ? <PostComment handleChange={this.handleChange} handleClick={this.handleClick} comment={comment} user={this.props.user}/> : null }
               <br/>
               {comments && comments.map(comment => {
-                  return <div className="Comment" key={comment._id}>
+                  return <div className="CommentContainer" key={comment._id}>
                             <img className="Avatar" src={comment.created_by.avatar_url} onError={this.handleError} alt="Avatars broken - please submit a bug report"/>
-                            <span className="NeedsMargin CommentCreator">{comment.created_by.username}</span>
-                            <span className="NeedsMargin CommentBody">{comment.body}</span>
+                            <span className="AddsMargin CommentCreator">{comment.created_by.username}</span>
+                            <span className="AddsMargin CommentBody">{comment.body}</span>
                             <div className="VotesTally">Votes:{comment.votes}</div>
                             {<button className="VoteButton" onClick={() => {this.changeCommentVotes(comment._id, 'up')}} >upvote</button>}
                             <button className="VoteButton" onClick={() => {this.changeCommentVotes(comment._id, 'down')}}>downvote</button>
@@ -54,7 +54,7 @@ class Comments extends Component {
     }
     handleClick = () => {
         postComment(this.props.article._id, this.state.comment, this.props.user).then(newComment => {
-        const newComments = [...this.state.comments, {...newComment, created_by:this.props.user}].reverse()
+        const newComments = [...this.state.comments, {...newComment, created_by:this.props.user}]
             this.setState({comments:newComments, comment: ''})
         })
     }

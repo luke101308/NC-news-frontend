@@ -7,8 +7,8 @@ function AllTopics({topics, user}) {
                 {topics.map(topic => {
                    return (
                         <p  key={topic.title}>
-                            <NavLink className="NeedsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink>
-                            {Object.keys(user).length ? <NavLink className="NeedsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink> : ""}
+                            <NavLink className="AddsMargin" to={`../topics/${topic.title}`} key={topic.title}>{topic.title}</NavLink>
+                            {Object.keys(user).length ? <NavLink className="AddsMargin" to={`./topics/${topic.title}/post`}>   Post an article in {topic.title}</NavLink> : ""}
                             <br/>
                             <br/>
                         </p>  )              
